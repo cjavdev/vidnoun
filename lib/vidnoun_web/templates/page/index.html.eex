@@ -6,12 +6,9 @@
   </div>
   <div class="level-right">
     <div class="level-item">
-      Nouns
-
-      <span id="result">...</span>
+      Nouns <span id="result">...</span>
       with a confidence of <span id="probability">...</span>.
-      </p>
-
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/attribution/39524-42.png">
     </div>
   </div>
 </div>

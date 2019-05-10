@@ -24,10 +24,24 @@ navigator.mediaDevices.getUserMedia({ video: true })
 ml5.imageClassifier('MobileNet', video)
   .then(classifier => loop(classifier))
 
+let seen = {};
+
 const loop = (classifier) => {
   classifier.classify()
     .then(results => {
-      console.log(results[0].label);
+      let _result = results[0];
+      let label = _result.label;
+      if (seen[label]) {
+        if (_result.confidence > seen[label]) {
+          seen[label] = _result.confidence;
+        }
+      } else {
+        seen[label] = _result.confidence;
+      }
+
+      if(Date.now() % 50 == 0) {
+        console.log(seen);
+      }
       result.innerText = results[0].label;
       probability.innerText = results[0].confidence.toFixed(4);
       loop(classifier) // Call again to create a loop
